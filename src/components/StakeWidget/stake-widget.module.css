@@ -1,0 +1,44 @@
+.container {
+  @apply rounded-lg mx-8 sm:mx-0 bg-[#B202D1] py-4 w-full sm:max-w-md;
+}
+
+.content {
+  @apply w-full;
+}
+
+.content__header {
+  @apply py-2 px-4;
+  @apply flex justify-between items-center;
+  @apply border-b-[1px] border-[#FFFFFF45];
+}
+
+.content__body {
+  @apply flex flex-col py-4 px-4 gap-4;
+}
+
+.stake__input {
+  @apply rounded-3xl py-3 pl-4 pr-20;
+  @apply alien-19 text-white;
+  background: url("../../assets/images/dlc-input-bg.png") no-repeat right;
+  background-size: cover;
+  outline: none;
+}
+
+.stake__buttons {
+  @apply flex flex-col md:flex-row justify-center gap-4 md:gap-6;
+}
+
+.stake__buttons button {
+  @apply rounded-3xl w-full py-2 text-[#B202D1] alien-19 uppercase;
+  @apply bg-white;
+}
+
+.stake__buttons button[disabled] {
+  @apply bg-[#40024B];
+  @apply opacity-80 text-white;
+}
+
+.disclaimer {
+  @apply px-4 py-2;
+  @apply rounded-lg bg-[#FFD8FB];
+}

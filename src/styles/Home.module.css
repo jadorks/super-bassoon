@@ -1,0 +1,11 @@
+.content {
+  @apply flex justify-center items-center gap-16;
+}
+
+.content__left {
+  @apply hidden lg:block;
+}
+
+/* .content__right {
+  @apply w-96;
+} */

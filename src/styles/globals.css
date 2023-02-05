@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Inter-Regular";
+    src: url("../assets/fonts/Inter/Inter-Regular.woff2") format("woff2"),
+      url("../assets/fonts/Inter/Inter-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Alien-Encounters-Solid";
+    src: url("../assets/fonts/Alien-Encouters/AlienEncountersSolid.woff2")
+        format("woff2"),
+      url("../assets/fonts/Alien-Encouters/AlienEncountersSolid.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Proxima-Soft";
+    src: url("../assets/fonts/ProximaSoft-Regular/ProximaSoft-Regular.woff2")
+        format("woff2"),
+      url("../assets/fonts/ProximaSoft-Regular/ProximaSoft-Regular.woff")
+        format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

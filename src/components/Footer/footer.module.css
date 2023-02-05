@@ -1,0 +1,13 @@
+.container{
+    margin-top: auto;
+    @apply flex justify-center items-center w-full xl:px-32 py-4;
+}
+
+.content{
+    @apply flex flex-col items-center md:flex-row justify-between w-full px-4 xl:px-4 pt-4;
+    @apply border-t-2 border-white;
+}
+
+.socials {
+    @apply flex gap-4;
+}

@@ -1,0 +1,119 @@
+.wallet_dialog {
+    @apply fixed inset-0 z-20 overflow-y-auto;
+  }
+  
+  .wallet_dailog_containter {
+    @apply min-h-screen px-4 text-center;
+  }
+  
+  .wallet_dialog_overlay {
+    @apply fixed inset-0 bg-[#000000] opacity-80;
+  }
+  
+  .wallet_dialog_containter_spacer {
+    @apply inline-block h-screen align-middle;
+  }
+  
+  .wallet_dialog_content {
+    @apply inline-block w-full max-w-md my-8;
+    @apply overflow-hidden text-left align-middle;
+    @apply transition-all transform bg-[#202020] shadow-xl rounded-2xl;
+    @apply border border-solid border-[#202020];
+  }
+  
+  .wallet_dialog_header {
+    @apply px-6 py-4 w-full;
+  }
+  .wallet_dialog_header_content {
+    @apply flex w-full items-center alien-19 justify-between pb-2;
+    @apply border-b-[1px];
+  }
+  .wallet_dialog_close {
+    @apply text-white cursor-pointer;
+    font-size: 32px !important;
+    transition: all 0.2s linear 0s;
+  }
+  
+  .wallet_dialog_close:hover {
+    @apply text-[#FA4F27];
+  }
+  
+  .wallet_dialog_title {
+    @apply text-white;
+  }
+  
+  .wallet_dialog_body {
+    @apply p-6 pt-1;
+  }
+  
+  .wallet_dialog_notice {
+    @apply mt-2 p-4 rounded-md border border-solid;
+    border-color: #0c0c30;
+    background-color: #0f0f34;
+  }
+  
+  .wallet_dialog_notice p {
+    @apply text-[#E4E4E4];
+  }
+  
+  .wallet_dialog_providers {
+    @apply mb-4;
+  }
+  
+  .wallet_dialog_providers_list li {
+    @apply px-6 mx-6 rounded-lg;
+  }
+  
+  .wallet_dialog_providers_list li:hover {
+    @apply bg-[#000000];
+  }
+  
+  .wallet_dialog_providers_list button {
+    @apply flex items-center py-5 w-full;
+  }
+  
+  .wallet_dialog_providers_list button img {
+    width: 34px;
+  }
+  
+  .wallet_dialog_providers_list button span:first-of-type {
+    @apply text-white alien-16 ml-5 mr-auto;
+  }
+  
+  .wallet_dialog_provider {
+    @apply flex items-center justify-between;
+  }
+  
+  .wallet_dialog_provider p {
+    @apply text-white font-inter_reg text-[16px];
+  }
+  
+  .wallet_dialog_disconnect {
+    @apply rounded-3xl py-2 text-white font-inter_reg text-[16px];
+    @apply bg-black border-[#4D4D4D] border-2;
+    @apply px-4 py-1;
+  }
+  .wallet_dialog_address {
+    @apply mt-4 pb-4;
+  }
+  
+  .wallet_dialog_address > p {
+    @apply text-white font-inter_reg text-[16px];
+  }
+  
+  .wallet_dialog_address_copy_etherscan {
+    @apply flex py-2 gap-6;
+  }
+  
+  .wallet_dialog_bottom_text,
+  .wallet_dialog_bottom_text a {
+    @apply relative cursor-pointer flex gap-2 items-center font-inter_reg text-[16px] text-white;
+  }
+  
+  .wallet_dialog_bottom_text img {
+    @apply w-4;
+  }
+  
+  .tooltip {
+    @apply text-left absolute bottom-0 left-0 top-12 md:top-6;
+  }
