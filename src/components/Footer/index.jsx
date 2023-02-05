@@ -7,11 +7,11 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: TelegramIcon.src,
-      url: "/#",
+      url: "https://t.me/deeplearningchain",
     },
     {
       icon: TwitterIcon.src,
-      url: "/#",
+      url: "https://twitter.com/DLChainAI",
     },
   ];
 
@@ -24,7 +24,7 @@ export default function Footer() {
         <div className={styles.content__right}>
           <div className={styles.socials}>
             {socialLinks.map((item, index) => (
-              <a href={item.url} key={index}>
+              <a href={item.url} key={index} target="_blank" rel="noreferrer nopenner">
                 <img src={item.icon} alt="" />
               </a>
             ))}
