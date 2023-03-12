@@ -20,10 +20,11 @@ import { useRouter } from "next/router";
 import { useUnstakeTokens } from "@/hooks/stake/useUnstakeTokens";
 import { useClaimRewards } from "@/hooks/stake/useClaimRewards";
 import WalletManager from "../WalletManager";
+import { useCompundRewards } from "@/hooks/stake/useCompoundRewards";
 
 export default function StakeWidget() {
   const { account } = useEthers();
-  const balance = useTokenBalance(TOKEN_ADDRESS[Mainnet.chainId], account,);
+  const balance = useTokenBalance(TOKEN_ADDRESS[Mainnet.chainId], account);
   const contract = useStakeContract();
   const { userInfo, userRewards } = useDLCDapp();
   const [amount, setAmount] = useState("");
@@ -35,11 +36,13 @@ export default function StakeWidget() {
   const [isStaking, setIsStaking] = useState(false);
   const [isUnstaking, setIsUnstaking] = useState(false);
   const [isClaiming, setIsClaiming] = useState(false);
+  const [isCompounding, setIsCompounding] = useState(false);
   const [isApproved, setIsApproved] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const { send: stake, state: stakeState } = useStakeTokens();
   const { send: unstakeToken, state: unstakeState } = useUnstakeTokens();
   const { send: claimRewards, state: claimState } = useClaimRewards();
+  const { send: compoundRewards, state: compoundState } = useCompundRewards();
 
   const {
     approvalState,
@@ -77,6 +80,16 @@ export default function StakeWidget() {
     }
   };
 
+  const handleCompoundRewards = () => {
+    try {
+      setIsCompounding(true);
+      void compoundRewards();
+    } catch (e) {
+      setIsCompounding(false);
+      console.error(e);
+    }
+  };
+
   const handleUnstakeToken = () => {
     setIsUnstaking(true);
     try {
@@ -90,10 +103,10 @@ export default function StakeWidget() {
   useEffect(() => {
     if (account) {
       if (
-        (balance != undefined &&
-          compareNonTokenWithToken(balance, amount, 9) == -1) &&
-        (stakedTokens != undefined &&
-          compareNonTokenWithToken(stakedTokens, amount, 9) == -1)
+        balance != undefined &&
+        compareNonTokenWithToken(balance, amount, 9) == -1 &&
+        stakedTokens != undefined &&
+        compareNonTokenWithToken(stakedTokens, amount, 9) == -1
       ) {
         setErrorMessage("Insufficient balance");
       } else {
@@ -185,6 +198,25 @@ export default function StakeWidget() {
       setIsClaiming(false);
     }
   }, [claimState]);
+
+  useEffect(() => {
+    if (isCompounding && compoundState.status == "Success") {
+      alert("Compounded successfully");
+      setIsCompounding(false);
+      router.reload();
+    } else if (
+      isCompounding &&
+      (compoundState.status == "Fail" || compoundState.status == "Exception")
+    ) {
+      alert(
+        `Failed to compound: ${
+          compoundState.errorMessage.charAt(0).toUpperCase() +
+          compoundState.errorMessage.slice(1)
+        }`
+      );
+      setIsCompounding(false);
+    }
+  }, [compoundState]);
 
   const closeWalletModal = () => {
     setWalletModalOpen(false);
@@ -299,6 +331,22 @@ export default function StakeWidget() {
               >
                 Claim Rewards
                 {isClaiming && <img className="w-6" src={Spinner.src} alt="" />}
+              </button>
+              <button
+                disabled={
+                  userRewards <= 0 ||
+                  isStaking ||
+                  isClaiming ||
+                  isUnstaking ||
+                  isApproving
+                }
+                className="flex justify-center items-center gap-1"
+                onClick={handleCompoundRewards}
+              >
+                Compound
+                {isCompounding && (
+                  <img className="w-6" src={Spinner.src} alt="" />
+                )}
               </button>
             </div>
           )}
